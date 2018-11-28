@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="mockdata.js"></script>
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    />
+    <link href="css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <link
+      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://datatables.net/download/build/nightly/jquery.dataTables.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <table id="bar" class="display">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      <table id="wtf" class="display">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+ 
+
+    <script>
+
+      topicArray = ["Foo", "Bar", "WTF"];
+      var topicList = {};
+      myArrays = [];
+      for (var i = 0; i < topicArray.length; ++i) {
+        var topicName = topicArray[i];
+        topicList[topicName] = [];
+        topicList[topicName].push(["test1", "test2"]);
+        myArrays.push(topicList[topicName]);
+      }
+
+      topicList.Bar.push(["A", "B"]);
+      topicList.WTF.push(["ABC", "123"]);
+      console.log(myArrays);
+      console.log(topicList.Bar);
+
+      $("#bar").DataTable({
+        data: topicList.Bar
+      });
+
+    $("#wtf").DataTable({
+        data: topicList.WTF
+      });
+    </script>
+  </body>
+</html>
